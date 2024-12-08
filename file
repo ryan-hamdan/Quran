@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Book Website</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            height: 100vh;
+        }
+
+        #sidebar {
+            width: 250px;
+            background-color: #f4f4f4;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+        }
+
+        #content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 0;
+        }
+
+        .dropdown {
+            margin-bottom: 20px;
+        }
+
+        .dropdown button {
+            width: 100%;
+            padding: 10px;
+            text-align: left;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .dropdown button:hover {
+            background-color: #0056b3;
+        }
+
+        .dropdown-content {
+            display: none;
+            margin-top: 10px;
+            background-color: #f9f9f9;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        .dropdown-content a {
+            display: block;
+            text-decoration: none;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .dropdown-content a:hover {
+            color: #007BFF;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+    <script>
+        function toggleDropdown(id) {
+            const content = document.getElementById(id);
+            if (content.style.display === 'block') {
+                content.style.display = 'none';
+            } else {
+                content.style.display = 'block';
+            }
+        }
+
+        function openPDF(url) {
+            document.getElementById('pdfViewer').src = url;
+        }
+    </script>
+</head>
+<body>
+    <div id="sidebar">
+        <h2>Books</h2>
+
+        <div class="dropdown">
+            <button onclick="toggleDropdown('book1')">Book 1</button>
+            <div id="book1" class="dropdown-content">
+                <a href="#" onclick="openPDF('book1.pdf')">Full Book 1</a>
+                <!-- Chapter links for Book 1 -->
+                <script>
+                    for (let i = 1; i <= 50; i++) {
+                        document.write(`<a href="#" onclick="openPDF('book1-chapter${i}.pdf')">Chapter ${i}</a>`);
+                    }
+                </script>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <button onclick="toggleDropdown('book2')">Book 2</button>
+            <div id="book2" class="dropdown-content">
+                <a href="#" onclick="openPDF('book2.pdf')">Full Book 2</a>
+                <!-- Chapter links for Book 2 -->
+                <script>
+                    for (let i = 1; i <= 50; i++) {
+                        document.write(`<a href="#" onclick="openPDF('book2-chapter${i}.pdf')">Chapter ${i}</a>`);
+                    }
+                </script>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <button onclick="toggleDropdown('book3')">Book 3</button>
+            <div id="book3" class="dropdown-content">
+                <a href="#" onclick="openPDF('book3.pdf')">Full Book 3</a>
+                <!-- Chapter links for Book 3 -->
+                <script>
+                    for (let i = 1; i <= 50; i++) {
+                        document.write(`<a href="#" onclick="openPDF('book3-chapter${i}.pdf')">Chapter ${i}</a>`);
+                    }
+                </script>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <button onclick="toggleDropdown('book4')">Book 4</button>
+            <div id="book4" class="dropdown-content">
+                <a href="#" onclick="openPDF('book4.pdf')">Full Book 4</a>
+                <!-- Chapter links for Book 4 -->
+                <script>
+                    for (let i = 1; i <= 50; i++) {
+                        document.write(`<a href="#" onclick="openPDF('book4-chapter${i}.pdf')">Chapter ${i}</a>`);
+                    }
+                </script>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="content">
+        <h1>My Book Collection</h1>
+        <iframe id="pdfViewer" src=""></iframe>
+    </div>
+</body>
+</html>
